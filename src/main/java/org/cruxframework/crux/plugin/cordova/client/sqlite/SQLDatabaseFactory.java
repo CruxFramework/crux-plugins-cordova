@@ -32,9 +32,10 @@ public class SQLDatabaseFactory
 	@JsType
 	public static class SQLDatabaseParameters
 	{
-		public String name;
+		public int androidDatabaseImplementation;
 		public int androidLockWorkaround;
 		public int createFromLocation;
 		public int location;
+		public String name;
 	}
 }
