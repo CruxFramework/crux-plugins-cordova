@@ -29,19 +29,16 @@ public class Cordova
 	private static Cordova instance = new Cordova();
 	private static final int TIMEOUT = 1000;
 	private static Timer timeoutTimer;
+	private Plugins plugins = new Plugins();
 	
 	protected Cordova()
     {
     }
-
-	/**
-	 * Verify if SQLite database is supported by the current browser.
-	 * @return
-	 */
-	public final native boolean isSQLDatabaseSupported()/*-{
-		var sqlsupport = !!$wnd.sqlitePlugin;
-		return sqlsupport;
-	}-*/;
+	
+	public Plugins getPlugins()
+	{
+		return plugins;
+	}
 	
 	/**
 	 * Initialize Cordova
@@ -105,5 +102,29 @@ public class Cordova
 	{
 		void onCordovaAvailable(Cordova cordova);
 		void onError();
+	}
+	
+	public static class Plugins
+	{
+		private Plugins() {}
+		
+		/**
+		 * Verify if Google Analytics plugin is supported.
+		 * @return
+		 */
+		public final native boolean isGoogleAnalyticsSupported()/*-{
+			var analyticsSupport = !!$wnd.analytics;
+			return analyticsSupport;
+		}-*/;
+		
+		/**
+		 * Verify if SQLite plugin is supported.
+		 * @return
+		 */
+		public final native boolean isSQLiteSupported()/*-{
+			var sqlsupport = !!$wnd.sqlitePlugin;
+			return sqlsupport;
+		}-*/;
+		
 	}
 }

@@ -13,24 +13,31 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
 
-import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
+ * This requires the https://github.com/litehelpers/cordova-sqlite-ext
+ * cordova plugin.
+ * 
  * @author Thiago da Rosa de Bustamante
- *
  */
-@JsType
-public class SQLResultSet
+@JsType(namespace=JsPackage.GLOBAL, name="sqlitePlugin")
+public class SQLDatabaseFactory
 {
-	@JsProperty
-	public native int getInsertId();
+	private SQLDatabaseFactory(){}
 	
-	@JsProperty
-	public native int getRowsAffected();
+	public static native SQLDatabase openDatabase(SQLDatabaseParameters parameters, SQLSuccessCallback openCallback, SQLErrorCallback errorCallback);
 	
-	@JsProperty
-	public native SQLResultSetRowList getRows();
+	@JsType
+	public static class SQLDatabaseParameters
+	{
+		public int androidDatabaseImplementation;
+		public int androidLockWorkaround;
+		public int createFromLocation;
+		public int location;
+		public String name;
+	}
 }

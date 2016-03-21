@@ -13,35 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsFunction;
 
 /**
  * @author Thiago da Rosa de Bustamante
+ *
  */
-public class SQLRow extends JavaScriptObject
+@JsFunction
+public interface SQLErrorCallback
 {
-	protected SQLRow() {}
-	
-	public final native String getString(String key)/*-{
-	    return this[key]; 
-	}-*/;
-
-	public final native int getInt(String key)/*-{
-	    return this[key]; 
-	}-*/;
-
-	public final native JavaScriptObject getObject(String key)/*-{
-	    return this[key]; 
-	}-*/;
-
-
-	public final native double getDouble(String key)/*-{
-	    return this[key]; 
-	}-*/;
-
-	public final native boolean hasKey(String key)/*-{
-	    return !!this[key]; 
-	}-*/;
+	void onError(SQLError error);
 }

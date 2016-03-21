@@ -13,29 +13,29 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
 
-import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
  * @author Thiago da Rosa de Bustamante
- *
  */
-@JsType(namespace=JsPackage.GLOBAL, name="sqlitePlugin")
-public class SQLDatabaseFactory
+@JsType
+public class SQLError
 {
-	private SQLDatabaseFactory(){}
+	public static final short UNKNOWN_ERR = 0;
+	public static final short DATABASE_ERR = 1;
+	public static final short VERSION_ERR = 2;
+	public static final short TOO_LARGE_ERR = 3;
+	public static final short QUOTA_ERR = 4;
+	public static final short SYNTAX_ERR = 5;
+	public static final short CONSTRAINT_ERR = 6;
+	public static final short TIMEOUT_ERR = 7;
+
+	@JsProperty
+	public native short getCode();
 	
-	public static native SQLDatabase openDatabase(SQLDatabaseParameters parameters, SQLSuccessCallback openCallback, SQLErrorCallback errorCallback);
-	
-	@JsType
-	public static class SQLDatabaseParameters
-	{
-		public int androidDatabaseImplementation;
-		public int androidLockWorkaround;
-		public int createFromLocation;
-		public int location;
-		public String name;
-	}
+	@JsProperty
+	public native String getMessage();
 }
