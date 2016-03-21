@@ -13,8 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
 
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
@@ -22,9 +23,14 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType
-public class SQLResultSetRowList 
+public class SQLResultSet
 {
-	public int length;
+	@JsProperty
+	public native int getInsertId();
 	
-	public native SQLRow item(int index);
+	@JsProperty
+	public native int getRowsAffected();
+	
+	@JsProperty
+	public native SQLResultSetRowList getRows();
 }

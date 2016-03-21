@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
 
 import jsinterop.annotations.JsFunction;
 
@@ -22,7 +22,7 @@ import jsinterop.annotations.JsFunction;
  *
  */
 @JsFunction
-public interface SQLErrorCallback
+public interface SQLSuccessCallback
 {
-	void onError(SQLError error);
+	void onSuccess(SQLDatabase db);
 }
