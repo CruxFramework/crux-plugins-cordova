@@ -19,7 +19,7 @@ import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.user.client.Timer;
 
 /**
- * Cordova integation plugin. Before use any cordova feature, you must call
+ * Cordova integration plugin. Before use any cordova feature, you must call
  * Cordova.init() to load cordova into your page.
  * @author Thiago da Rosa de Bustamante
  */
@@ -57,6 +57,17 @@ public class Cordova
 			callback.onCordovaAvailable(instance);
 		}
 	}
+
+	public native void exitApp()/*-{
+		$wnd.navigator.app.exitApp();	
+	}-*/;
+	
+	public native void addBackPressedListener(EventCallback callback) /*-{
+	  	$doc.addEventListener("backbutton", $entry(function() 
+		{
+	    	callback.@org.cruxframework.crux.plugin.cordova.client.Cordova.EventCallback::onEvent()();
+	  	}), false);
+	}-*/;
 	
 	private static native void initializeListener(Cordova cordova, CordovaAvailableCallback callback) /*-{
 	  	$doc.addEventListener("deviceready", $entry(function() 
@@ -104,6 +115,16 @@ public class Cordova
 		void onError();
 	}
 	
+	/**
+	 * A Cordova event callback
+	 * @author Thiago da Rosa de Bustamante
+	 *
+	 */
+	public interface EventCallback  
+	{
+		void onEvent();
+	}
+
 	public static class Plugins
 	{
 		private Plugins() {}
