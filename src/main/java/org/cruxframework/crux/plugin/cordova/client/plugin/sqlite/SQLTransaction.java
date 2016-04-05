@@ -23,7 +23,7 @@ import jsinterop.annotations.JsType;
 /**
  * @author Thiago da Rosa de Bustamante
  */
-@JsType
+@JsType(isNative=true)
 public class SQLTransaction
 {
 	public native void executeSql(String sqlStatement, JsArrayMixed args, SQLStatementCallback stmtCallback, SQLStatementErrorCallback errorCallback);

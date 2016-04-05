@@ -21,18 +21,9 @@ import jsinterop.annotations.JsType;
 /**
  * @author Thiago da Rosa de Bustamante
  */
-@JsType
+@JsType(isNative=true)
 public class SQLError
 {
-	public static final short UNKNOWN_ERR = 0;
-	public static final short DATABASE_ERR = 1;
-	public static final short VERSION_ERR = 2;
-	public static final short TOO_LARGE_ERR = 3;
-	public static final short QUOTA_ERR = 4;
-	public static final short SYNTAX_ERR = 5;
-	public static final short CONSTRAINT_ERR = 6;
-	public static final short TIMEOUT_ERR = 7;
-
 	@JsProperty
 	public native short getCode();
 	
