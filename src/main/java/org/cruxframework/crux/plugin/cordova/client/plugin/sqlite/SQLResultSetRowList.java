@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
  * @author Thiago da Rosa de Bustamante
  *
  */
-@JsType
+@JsType(isNative=true)
 public class SQLResultSetRowList 
 {
 	public int length;

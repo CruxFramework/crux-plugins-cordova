@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
  * @author Thiago da Rosa de Bustamante
  *
  */
-@JsType
+@JsType(isNative=true)
 public class SQLDatabase 
 {
 	public native void transaction(SQLTransactionCallback transactionCallback, 
