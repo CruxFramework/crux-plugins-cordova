@@ -13,31 +13,33 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.cruxframework.crux.plugin.cordova.client.plugin.sqlite;
+package org.cruxframework.crux.plugin.cordova.client.plugin.cache;
 
+import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
- * This requires the https://github.com/litehelpers/cordova-sqlite-ext
- * cordova plugin.
- * 
- * @author Thiago da Rosa de Bustamante
+ * @author Samuel Almeida Cardoso
+ * Plugin mapping for: https://github.com/moderna/cordova-plugin-cache 
  */
-@JsType(namespace=JsPackage.GLOBAL, name="sqlitePlugin")
-public class SQLDatabaseFactory
+@JsType(namespace=JsPackage.GLOBAL, name="cache")
+public class CacheHandlerPlugin 
 {
-	private SQLDatabaseFactory(){}
+	private CacheHandlerPlugin(){}
 	
-	public static native SQLDatabase openDatabase(SQLDatabaseParameters parameters, SQLSuccessCallback openCallback, SQLErrorCallback errorCallback);
-	
-	@JsType
-	public static class SQLDatabaseParameters
+	public static native void clear(CacheSuccessCallback cacheSuccessCallback, 
+							CacheErrorCallback cacheErrorCallback);
+		
+	@JsFunction
+	public static interface CacheSuccessCallback
 	{
-		public int androidDatabaseImplementation;
-		public int androidLockWorkaround;
-		public int createFromLocation;
-		public String location;
-		public String name;
+		void onSuccess(String status);
+	}
+	
+	@JsFunction
+	public static interface CacheErrorCallback
+	{
+		void onError(String status);
 	}
 }
