@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
 
 /**
  * @author Samuel Almeida Cardoso
- * Pluggin mapping for: https://github.com/moderna/cordova-plugin-cache 
+ * Plugin mapping for: https://github.com/moderna/cordova-plugin-cache 
  */
 @JsType(namespace=JsPackage.GLOBAL, name="cache")
 public class CacheHandlerPlugin 
